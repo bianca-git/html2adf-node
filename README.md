@@ -134,30 +134,25 @@ npm -g install
 
 
 ```bash
-html2adf parse "<h1>This is where you put your HTML Input</h1>"
+html2adf item "<h1>This is where you put your HTML Input</h1>"
 
 # OR
 
-html2adf file ./MS123456.html
+html2adf group [JSONArray]
 ```
 
 ```text
+html2adf help
 Usage: command [options] [command]
 
 Options:
   -h, --help      Display help for command
 
 Commands:
-  parse "<html>"    Convert HTML to ADF
-  file <file>     Convert HTML to ADF
+  item <ITEM>     Convert HTML to ADF
+  group <GROUP>   Convert HTML to ADF
   help [command]  display help for command
 
 Examples:
-
-  $ htmladf parse "<h1>Hello World</h1>"
-  $ htmladf parse "<h1>Hello World</h1>" > output.json
-
-  $ htmladf file ./input.html
-  
   $ htmladf --help
 ```

@@ -14,12 +14,12 @@
  * The `@atlaskit/editor-json-transformer` library provides a `JSONTransformer` 
  * object, which is used to convert ADF to JSON.
  * 
- * The `convertHtmlToADF` function is the main function in this module. It takes 
+ * The `parseitem` function is the main function in this module. It takes 
  * an HTML string as input, simulates a browser environment, converts the HTML to 
  * ADF using the `JIRATransformer`, converts the ADF to JSON using the 
  * `JSONTransformer`, and finally returns the JSON as a string.
  * 
- * The `convertHtmlToADF` function could be used in a larger application to 
+ * The `parseitem` function could be used in a larger application to 
  * convert user-generated HTML content to a format that can be stored and 
  * manipulated more easily.
  */
@@ -37,7 +37,7 @@ const adfTransformer = new JSONTransformer();
  * Converts HTML to ADF and logs the result.
  * @param {string} html - The HTML string to be converted.
  */
-function convertHtmlToADF(html) {
+function parseitem(html) {
   // Simulate browser environment
   const dom = new JSDOM('<!doctype html><html><body></body></html>');
   global.window = dom.window;
@@ -55,4 +55,4 @@ function convertHtmlToADF(html) {
   return JSON.stringify(adfJson)
 }
 
-export default convertHtmlToADF
+export default parseitem

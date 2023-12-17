@@ -5,17 +5,17 @@
 import { Command } from 'commander';
 const program = new Command()
 // Importing local functions & important JS packages
-import convertHtmlToADF from './convertHtmlToADF.js';
-import fs from 'fs';
+import parseitem from './parseitem.js';
+import parsegroup from './parsegroup.js';
 
 // Setting up the command line interface,
 // Defining the command 'parse' and its required argument '<html>'
 program
-  .command('parse <html>') // 
+  .command('item <ITEM>') // 
   .description('This is a console application that converts HTML to Atlassian Document Format (ADF).')
-  .action((html) => {
+  .action((item) => {
     // Converting the HTML to ADF using the provided function
-    const adfoutput = convertHtmlToADF(html);
+    const adfoutput = parseitem(item);
     console.log(adfoutput);
   })
   .summary('Convert HTML to ADF')
@@ -27,25 +27,21 @@ program
     console.log('  $ htmladf parse "<h1>Hello World</h1>" > output.json');
   });
 
-// Defining the option '--file' and its required argument '<file>'
+// Defining the option '--group' and its required argument '<group>'
 program
-  .command('file <file>')
-  .description('Read HTML from a file')
-  .action((file) => {
-    fs.readFile(file, 'utf8', function (err, data) {
-      if (err) {
-        console.log(err);
-      }
-      const adfoutput = convertHtmlToADF(data);
-      console.log(adfoutput);
-    });
+  .command('group <GROUP>')
+  .description('Read HTML from a group of items and convert to ADF')
+  .action((group) => {
+    // Converting the HTML to ADF using the provided function
+    const groupoutput = parsegroup(group);
+    console.log(groupoutput);
   })
   .summary('Convert HTML to ADF')
   .helpOption('-h, --help', 'Display help for command')
   .on('--help', () => {
     console.log('');
     console.log('Examples:');
-    console.log('  $ htmladf file ./input.html');
+    console.log('  $ htmladf group ./input.html');
   });
 
 // Defining the command 'help'
