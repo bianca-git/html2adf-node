@@ -60,5 +60,14 @@ program
     console.log(color.italic(color.success("  $ ") + "html2adf item " + color.info(`"<h1>HTML text input</h1>"`) + ' > output.json'));
   });
 
+// Defining the command 'version'
+program
+  .version('v0.1.3', '-v, --version', 'Output the current version')
+  .on('--version', () => {
+    console.log('');
+    console.log(color.bold(color.success('Examples:')));
+    console.log(color.italic(color.success("  $ ") + "html2adf version"));
+  });
+
 // Parsing the command line arguments
 program.parse(process.argv);
