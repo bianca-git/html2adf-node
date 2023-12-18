@@ -23,25 +23,10 @@ Please note that you need to have Node.js and npm installed on your machine to r
 
 To install this program, you would typically follow these steps:
 
-1. **Clone the repository**: If this code is part of a repository, you would first clone it to your local machine using Git. If it's not part of a repository, you would need to create a new directory on your machine and add this file to it.
-
-
-```powershell
-mkdir html2adf
-git clone https://github.com/bianca-git/html2adf-node ./html2adf
-cd html2adf
-```
-
-2. **Install dependencies**: If there's a `package.json` file in the directory, you would install the dependencies using npm (Node Package Manager). The `commander` package is a dependency of this program.
+**Install the CLI program globally**: This will make it callable from any location on your system.
 
 ```powershell
-npm install
-```
-
-3. **Install the CLI program globally**: This will make it callable from any location on your system.
-
-```powershell
-npm -g install
+npm -g install html2adf-node
 ```
 
 ## Usage <a name = "usage"></a>
