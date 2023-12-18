@@ -38,19 +38,17 @@ const adfTransformer = new JSONTransformer();
  * @param {string} html - The HTML string to be converted.
  */
 function parseitem(html) {
+  html = html.replaceAll(/\n+|\\n+|  +/gm, '')
   // Simulate browser environment
   const dom = new JSDOM('<!doctype html><html><body></body></html>');
   global.window = dom.window;
   global.DOMParser = window.DOMParser;
   global.Node = dom.window.Node;
   global.HTMLElement = dom.window.HTMLElement; 
-
   // Convert HTML to ADF
   const pmNode = jiraTransformer.parse(html);
-
   // Convert ADF to JSON
   const adfJson = adfTransformer.encode(pmNode);
-
   // Log the result
   return JSON.stringify(adfJson)
 }

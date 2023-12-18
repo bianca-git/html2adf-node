@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "This is a console application that converts HTML to Atlassian Document Format (ADF).",
   "type": "module",
-  "bin":{
+  "bin": {
     "html2adf": "./src/command.js"
   },
   "keywords": [
@@ -16,6 +16,7 @@
     "@atlaskit/editor-jira-transformer": "^8.3.19",
     "@atlaskit/editor-json-transformer": "^8.10.15",
     "commander": "^11.1.0",
-    "jsdom": "^23.0.1"
+    "jsdom": "^23.0.1",
+    "uglify-js": "^3.17.4"
   }
 }
