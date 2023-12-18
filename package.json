@@ -1,10 +1,10 @@
 {
   "name": "html2adf",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "This is a console application that converts HTML to Atlassian Document Format (ADF) using the Atlassian Schema.",
   "type": "module",
   "bin": {
-    "html2adf": "./src/command.js"
+    "html2adf": "src/command.js"
   },
   "main": "./src/command.js",
   "keywords": [
