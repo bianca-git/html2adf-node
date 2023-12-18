@@ -1,6 +1,6 @@
 {
-  "name": "html2adf-node",
-  "version": "0.1.3",
+  "name": "html2adf",
+  "version": "0.1.0",
   "description": "This is a console application that converts HTML to Atlassian Document Format (ADF) using the Atlassian Schema.",
   "type": "module",
   "bin": {
