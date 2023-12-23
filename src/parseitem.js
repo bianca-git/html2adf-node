@@ -28,11 +28,28 @@ import { JSDOM } from 'jsdom';
 import { defaultSchema } from '@atlaskit/adf-schema/dist/cjs/schema/default-schema.js';
 import { JSONTransformer } from '@atlaskit/editor-json-transformer';
 import { JIRATransformer } from '@atlaskit/editor-jira-transformer';
-import validator from 'validator';
+import {escape, unescape} from 'html-escaper';
 
 // Initialize the transformers
 const jiraTransformer = new JIRATransformer(defaultSchema);
 const adfTransformer = new JSONTransformer();
+const regexRemove= `/[^\x00-\xff]|\n+|
++|\r+|\t+|\0+|  +|(<br ?.{1}>)+|(<br>)+/gmiv`
+const escapeRegex = (str) => {
+  if (str == null) return '';
+  return String(str).replaceAll(/[$-\/?[-^{|}]/g, '\$&').replaceAll(regexRemove, '');
+};
+
+const escapeHTML = (str) => {
+  if (str == null) return '';
+  return escape(str)
+}
+
+const unescapeHTML = (str) => {
+  if (str == null) return '';
+  return unescape(str)
+}
+
 
 /**
  * Converts HTML to ADF and logs the result.
@@ -40,8 +57,6 @@ const adfTransformer = new JSONTransformer();
  */
 function parseitem(html) {
   try {
-    html = validator.escape(html)
-    html = html.replaceAll(/\n+|\\n+/gm, '').replaceAll(/ style=''/gm, '').replaceAll(/“+|”+|’+/gm, `'`)
     // Simulate browser environment
     const dom = new JSDOM('<!doctype html><html><body></body></html>');
     global.window = dom.window;
@@ -49,14 +64,14 @@ function parseitem(html) {
     global.Node = dom.window.Node;
     global.HTMLElement = dom.window.HTMLElement;
     // Convert HTML to ADF
-    const pmNode = jiraTransformer.parse(html);
+    const pmNode = jiraTransformer.parse(unescapeHTML(html));
     // Convert ADF to JSON
     const adfJson = adfTransformer.encode(pmNode);
     // Log the result
     return JSON.stringify(adfJson)
   }
   catch (error) {
-    return { err: error, inputHTML: html }
+    return { err: error, inputHTML: unescapeHTML(html) }
   }
 }
 

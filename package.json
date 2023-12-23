@@ -1,6 +1,6 @@
 {
   "name": "html2adf",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "This is a console application that converts HTML to Atlassian Document Format (ADF) using the Atlassian Schema.",
   "type": "module",
   "bin": {
@@ -18,7 +18,7 @@
     "@atlaskit/editor-json-transformer": "^8.10.15",
     "cli-color": "^2.0.3",
     "commander": "^11.1.0",
-    "jsdom": "^23.0.1",
-    "validator": "^13.11.0"
+    "html-escaper": "^3.0.3",
+    "jsdom": "^23.0.1"
   }
 }
