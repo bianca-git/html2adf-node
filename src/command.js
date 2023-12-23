@@ -62,7 +62,7 @@ program
 
 // Defining the command 'version'
 program
-  .version('v0.1.3', '-v, --version', 'Output the current version')
+  .version('v0.1.4', '-v, --version', 'Output the current version')
   .on('--version', () => {
     console.log('');
     console.log(color.bold(color.success('Examples:')));
